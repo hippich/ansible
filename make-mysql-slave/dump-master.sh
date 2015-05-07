@@ -20,5 +20,10 @@ set -x
 set -e
 set -o pipefail
 
+# get temp file for dump
+dumpfile=$(mktemp)
+
 # Dump master DB without locking master mysql. This will include current bin log position
-ssh -C $SSH_MASTER mysqldump --user="$DB_MASTER_USER" --password="$DB_MASTER_PASS" --skip-lock-tables --single-transaction --flush-logs --hex-blob --master-data=2 -B $DATABASES
+ssh -C $SSH_MASTER mysqldump --user="$DB_MASTER_USER" --password="$DB_MASTER_PASS" --skip-lock-tables --single-transaction --flush-logs --hex-blob --master-data=2 -B $DATABASES > $dumpfile
+
+
