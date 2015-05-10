@@ -1,0 +1,13 @@
+---
+- name: Update apt cache
+  apt: update_cache=yes
+
+- name: Upgrade all safe packages
+  apt: upgrade=safe
+
+- name: Install necessities and nice-to-haves
+  apt: pkg={{ item }} state=installed
+  with_items:
+    - mysql-client
+    - mysql-common
+    - mysql-server
