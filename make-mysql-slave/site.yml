@@ -1,9 +1,16 @@
 ---
-- hosts: all
-  user: deploy
+- hosts: master
   sudo: True
   vars_files:
     - vars/defaults.yml
-
   roles:
-    - slave
+    - mysql_dump
+
+- hosts: slave
+  sudo: True
+  vars_files:
+    - vars/defaults.yml
+  roles:
+    - install_mysql
+    - import_dump
+    - mysql_slave
