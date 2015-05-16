@@ -1,2 +1,6 @@
-[TODO]
-TODO # put SSH hostname in here, i.e. ssh.yourhost.com:2222, and replace [TODO] above with something meaningful
+# Read more there - http://docs.ansible.com/intro_inventory.html
+[master]
+master.host
+
+[slaves]
+slave.host
