@@ -1,0 +1,3 @@
+---
+- name: copy dump script
+  copy: src=dump-master.sh dest=~/
