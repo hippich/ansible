@@ -1,3 +1,18 @@
 ---
+
 - name: copy dump script
-  copy: src=dump-master.sh dest=~/
+  copy: src=dump-master.sh dest=~/ mode=755
+
+- name: export dump file
+  shell:
+    ./dump-master.sh
+  always_run: yes
+  register: master_dump_path
+  environment:
+    DATABASES: databases
+    DB_MASTER_USER: master_db_user
+    DB_MASTER_PASS: master_db_pass
+
+- name: fetch export file
+  fetch: src="{{ master_dump_path.stdout }}" dest=tmp/mysqldump.sql.gz flat=yes
+  always_run: yes

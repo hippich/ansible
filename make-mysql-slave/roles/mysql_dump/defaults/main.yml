@@ -1,0 +1,4 @@
+---
+master_db_user: "root"
+master_db_pass: ""
+databases: "test"
