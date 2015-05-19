@@ -4,7 +4,6 @@
     - mysql_dump
 
 - hosts: slave
-  sudo: True
   roles:
 #    - install_mysql
 #    - import_dump

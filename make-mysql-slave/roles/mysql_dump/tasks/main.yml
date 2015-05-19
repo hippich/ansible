@@ -16,3 +16,6 @@
 - name: fetch export file
   fetch: src="{{ master_dump_path.stdout }}" dest=tmp/mysqldump.sql.gz flat=yes
   always_run: yes
+
+- name: remove dump from remote
+  file: name="{{ master_dump_path.stdout }}" state=absent
