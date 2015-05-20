@@ -1,16 +1,16 @@
 ---
 - name: Update apt cache
+  sudo: yes
   apt: update_cache=yes
 
 - name: Upgrade all safe packages
+  sudo: yes
   apt: upgrade=safe
 
 - name: Install necessities and nice-to-haves
+  sudo: yes
   apt: pkg={{ item }} state=installed
   with_items:
     - mysql-client
     - mysql-common
     - mysql-server
-
-- name: copy dump script
-  copy: src=dump-master.sh dest=~/
