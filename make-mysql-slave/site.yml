@@ -6,6 +6,6 @@
 - hosts: slave
   roles:
     - install_mysql
-#    - import_dump
+    - import_dump
 #    - mysql_slave
 #    - check_slave_status

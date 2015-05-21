@@ -1,0 +1,12 @@
+---
+
+- name: upload dump to slave
+  always_run: yes
+  copy: src=tmp/mysqldump.sql.gz dest=~/
+
+- name: import dump
+  always_run: yes
+  shell: 'gunzip -c ~/mysqldump.sql.gz | mysql --user="{{ slave_db_user }}" --password="{{ slave_db_pass }}"'
+
+- name: remove dump from remote
+  file: name=~/mysqldump.sql.gz state=absent

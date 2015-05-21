@@ -1,0 +1,3 @@
+---
+slave_db_user: "root"
+slave_db_pass: ""
