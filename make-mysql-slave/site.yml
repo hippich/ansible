@@ -8,4 +8,4 @@
     - install_mysql
     - import_dump
     - mysql_slave
-#    - check_slave_status
+    - check_slave_status
