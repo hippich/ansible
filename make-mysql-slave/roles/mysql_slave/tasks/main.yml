@@ -1,0 +1,8 @@
+---
+
+- name: generate server-id
+  shell:
+    hostname -I | sed -e 's/ /\n/' | grep -v '^$'
+    | tail -1 | awk -F. '{print $3 * 256 + $4}'
+  changed_when: False
+  register: mysql_server_id
