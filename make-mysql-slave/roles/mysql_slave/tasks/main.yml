@@ -6,3 +6,10 @@
     | tail -1 | awk -F. '{print $3 * 256 + $4}'
   changed_when: False
   register: mysql_server_id
+
+- name: update server-id in my.cnf
+  sudo: yes
+  replace:
+    dest=/etc/mysql/my.cnf
+    regexp='^#?\s*server\-id.+$'
+    replace='server-id={{mysql_server_id.stdout}}'
