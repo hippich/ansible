@@ -13,3 +13,6 @@
     dest=/etc/mysql/my.cnf
     regexp='^#?\s*server\-id.+$'
     replace='server-id={{mysql_server_id.stdout}}'
+
+- name: restart mysql
+  service: name=mysql state=restarted
